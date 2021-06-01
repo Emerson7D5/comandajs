@@ -1,0 +1,761 @@
+<DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" type="image/png" href="img/logo.svg">
+        <title>Comanda App</title>
+        <!-- Slick Slider -->
+        <link rel="stylesheet" type="text/css" href="vendor/slick/slick.min.css" />
+        <link rel="stylesheet" type="text/css" href="vendor/slick/slick-theme.min.css" />
+        <!-- Icofont Icon-->
+        <link href="vendor/icons/icofont.min.css" rel="stylesheet" type="text/css">
+        <!-- Bootstrap core CSS -->
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <!-- Sidebar CSS -->
+        <link href="vendor/sidebar/demo.css" rel="stylesheet">
+        <!-- Estilos propios de la app -->
+        <link href="css/estilo.css" rel="stylesheet">
+    </head>
+
+    <body class="fixed-bottom-padding">
+        <!-- home page -->
+        <div class="osahan-home-page">
+            <div class="border-bottom p-3 " style="background-color:rgb(48, 50, 177);">
+                <div class="title d-flex align-items-center">
+                    <a href="menu.html" class="text-decoration-none text-dark d-flex align-items-center">
+                        <img class="osahan-logo mr-2" src="img/categorie/dining-table.svg">
+                        <h4 class="font-weight-bold text-success m-0">Comanda</h4>
+                    </a>
+                    <!-- <p class="ml-auto m-0">
+                        <a href="#" class="text-decoration-none bg-white p-1 rounded shadow-sm d-flex align-items-center">
+                            <i class="text-white icofont-notification"></i>
+                            <span class="badge badge-danger p-1 ml-1 small">2</span>
+                        </a>
+                    </p>
+                    <a class="toggle ml-3" href="#"><i class="icofont-navigation-menu"></i></a> -->
+                    <button type="button" class="ml-auto  btn btn-success rounded " onClick="showCategorias()" id="btnAperturarMesa">Volver al menú</button>
+                </div>
+
+            </div>
+            <!-- body -->
+            <div class="osahan-body">
+
+                <div class="osahan-body">
+                    <!-- Seleccione un producto -->
+                    <div class="title d-flex align-items-center mb-3 mt-3 px-3">
+                        <!-- <h6 class="m-0">Seleccione un producto de los <strong><span id="favSel"></span> </strong></h6> -->
+                        <!-- <a class="ml-auto  btn btn-success rounded " href="#" data-toggle="modal" data-target="#modalCategorias">Volver al menú</a> -->
+                        <!-- <button type="button" class="ml-auto  btn btn-success rounded " onClick="showCategorias()" id="btnAperturarMesa">Volver al menú</button> -->
+                    </div>
+                    <!-- Listado de productos -->
+
+                    <div class="osahan-body">
+                        <div class="row">
+                            <div class="col-8">
+                                <div id='dvListadoCombos'>
+                                    <div class="card">
+                                        <div class="card-header bg-primary ">
+                                            <!-- <h3 class="modal-title my-0" style="color: aliceblue;" id="exampleModalLabel">Seleccione un menu</h3> -->
+                                            <h4 class="m-0" style="color: aliceblue;" id="exampleModalLabel">Seleccione un producto de los <strong><span id="favSel"></span> </strong></h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <div id="dvListaPlatos">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id='dvListadoMenu'>
+                                    <div class="card">
+                                        <div class="card-header bg-primary ">
+                                            <h4 class="modal-title my-0" style="color: aliceblue;" id="exampleModalLabel">Seleccione un menu</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <form>
+                                                <div class="account-sections">
+                                                    <div class="form-group">
+                                                        <br/>
+                                                        <ul class="list-group" id="listSecciones">
+                                                            <!-- <div id="listaSecciones"></div> -->
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div>
+                                    <div class="card border-primary mb-3">
+                                        <div class="card-header bg-primary text-white">
+                                            <h4> Orden en proceso!</h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <nav aria-label="breadcrumb">
+                                                <ol class="breadcrumb">
+                                                    <li class="breadcrumb-item active">
+                                                        Sala:
+                                                        <h6 id="lblSala"> </h6>
+                                                    </li>
+                                                    <li class="breadcrumb-item active" aria-current="page">Mesa:
+                                                        <h6 id="lblMesa"> </h6>
+                                                    </li>
+                                                    <li class="breadcrumb-item active" aria-current="page">Codigo Cliente:
+                                                        <h6 id="lblCodCliente"> </h6>
+                                                    </li>
+                                                </ol>
+                                            </nav>
+                                        </div>
+                                        <ol class="list-group list-group-numbered" id="ordenList">
+
+                                        </ol>
+                                        <div class="card-body">
+                                            <a href="#" class="btn btn-secondary " id="btnConfirmar" onclick="fnImprimirOrden()">Confirmar Orden</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer -->
+            <div class="osahan-menu-fotter fixed-bottom bg-white text-center border-top">
+                <div class="row m-0">
+                    <a href="menu.html" class="text-muted col small text-decoration-none p-2 ">
+                        <p class="h5 m-0"><i class=" icofont-grocery"></i></p>
+                        Mesas
+                    </a>
+                    <a href="#" class="text-dark small col font-weight-bold text-decoration-none p-2  selected">
+                        <p class="h5 m-0"><i class="text-success icofont-cart"></i></p>
+                        Orden en Proceso
+                    </a>
+                    <a href="#" class="text-muted col small text-decoration-none p-2 ">
+                        <p class="h5 m-0"><i class="icofont-bag"></i></p>
+                        Ordenes
+                    </a>
+                    <a href="#" class="text-muted small col text-decoration-none p-2">
+                        <p class="h5 m-0"><i class="icofont-user"></i></p>
+                        Cuenta
+                    </a>
+                </div>
+            </div>
+
+
+
+            <!-- Modal para seleccionar los modificadores -->
+            <div class="modal fade" id="modalComplementos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header ">
+                            <div class="border-bottom p-3 modal-title " style="width: 100%; background-color:rgb(48, 50, 177); padding: 0; margin: 0;">
+                                <div class="title d-flex align-items-center">
+                                    <a href="menu.html" class="text-decoration-none text-dark d-flex align-items-center">
+                                        <img class="osahan-logo mr-2" src="img/categorie/dining-table.svg">
+                                        <h4 class="font-weight-bold text-success m-0">Comanda</h4>
+                                    </a>
+                                    <!-- <p class="ml-auto m-0">
+                                        <a href="#" class="text-decoration-none bg-white p-1 rounded shadow-sm d-flex align-items-center">
+                                            <i class="text-white icofont-notification"></i>
+                                            <span class="badge badge-danger p-1 ml-1 small">2</span>
+                                        </a>
+                                    </p>
+                                    <a class="toggle ml-3" href="#"><i class="icofont-navigation-menu"></i></a> -->
+
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                 
+                                    <a href="" class="btn btn-success rounded  btn-lg" >Continuar</a>
+                                </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-body" style="background-color: lightslategrey;">
+                            <div class="row">
+                                <div class="col-8">
+                                    <div>
+                                        <div class="card border-primary mb-3">
+                                            <div class="card-header bg-primary text-white">
+                                                <h4> Seleccione los complementos</h3>
+                                            </div>
+                                            <div style="padding-right: 00px; padding-left: 00px;"><br/>
+
+                                                <!-- <h2 class="modal-title my-0" id="exampleModalLabel">Seleccione los complementos</h2> -->
+
+                                                <div class="pick_today px-3">
+                                                    <div class="row">
+                                                        <!-- listado de categorias de complementos -->
+                                                        <div class="col-4">
+                                                            <div id="listadoCategoriaModificadores">
+                                                                <!-- LISTADO DE CATEGORIAS DE COMPLEMENTO -->
+                                                            </div>
+                                                            <!-- COMPLEMENTO -->
+                                                        </div>
+
+                                                        <!-- listado de complementos -->
+                                                        <div class="col-8">
+                                                            <!-- COMPLEMENTO -->
+                                                            <div id="listadoModificadores">
+                                                                <!-- LISTADO DE CATEGORIAS DE COMPLEMENTO -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <a href="#" class="btn btn-secondary " id="btnConfirmar" onclick="fnImprimirOrden()">Confirmar Orden</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div>
+                                        <div class="card border-primary mb-3">
+                                            <div class="card-header bg-primary text-white">
+                                                <h4> Orden en proceso</h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <nav aria-label="breadcrumb">
+                                                    <ol class="breadcrumb">
+                                                        <li class="breadcrumb-item active">
+                                                            Sala:
+                                                            <h6 id="lblSala2"> </h6>
+                                                        </li>
+                                                        <li class="breadcrumb-item active" aria-current="page">Mesa:
+                                                            <h6 id="lblMesa2"> </h6>
+                                                        </li>
+                                                        <li class="breadcrumb-item active" aria-current="page">Codigo Cliente:
+                                                            <h6 id="lblCodCliente2"> </h6>
+                                                        </li>
+                                                    </ol>
+                                                </nav>
+                                            </div>
+                                            <ol class="list-group list-group-numbered" id="ordenList2">
+
+                                            </ol>
+                                            <div class="card-body">
+                                                <a href="#" class="btn btn-secondary " id="btnConfirmar2" onclick="fnImprimirOrden()">Confirmar Orden</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <br/>
+                            <div class="modal-footer" style="background-color: white;">                                
+                                <a href="" class="btn btn-success rounded  btn-lg">Continuar</a>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal para Seleccionar categorias -->
+            <div class="modal fade" id="modalCategorias" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+                <!-- <div class="modal fade" id="modalCategorias" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true"></div> -->
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header ">
+                            <div class="border-bottom p-3 modal-title " style="width: 100%; background-color:rgb(48, 50, 177); padding: 0; margin: 0;">
+                                <div class="title d-flex align-items-center">
+                                    <a href="menu.html" class="text-decoration-none text-dark d-flex align-items-center">
+                                        <img class="osahan-logo mr-2" src="img/categorie/dining-table.svg">
+                                        <h4 class="font-weight-bold text-success m-0">Comanda</h4>
+                                    </a>
+                                    <!-- <p class="ml-auto m-0">
+                                    <a href="#" class="text-decoration-none bg-white p-1 rounded shadow-sm d-flex align-items-center">
+                                        <i class="text-white icofont-notification"></i>
+                                        <span class="badge badge-danger p-1 ml-1 small">2</span>
+                                    </a>
+                                </p>
+                                <a class="toggle ml-3" href="#"><i class="icofont-navigation-menu"></i></a> -->
+
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="modal-body">
+                            <div style="padding-right: 40px; padding-left: 40px;"><br/>
+                                <!-- <h2 class="modal-title my-0" id="exampleModalLabel">Seleccione un menu</h2>
+
+                                <form>
+                                    <div class="account-sections">
+                                        <div class="input-group ml-3 rounded shadow-sm overflow-hidden bg-white">
+                                            <div class="input-group-prepend">
+                                                <button class="border-0 btn btn-outline-secondary text-success bg-white"><i class="icofont-search"></i></button>
+                                            </div>
+                                            <input type="text" class="shadow-none border-0 form-control pl-0" placeholder="Filtrar por.." aria-label="" aria-describedby="basic-addon1" value="" onkeyup="filtrarCategorias()" id="buscarCat">
+                                        </div>
+                                        <div class="form-group">
+                                            <br/>
+                                            <ul class="list-group" id="listSecciones">
+                                                <div id="listaSecciones"></div>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </form> -->
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary rounded btn-lg" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Bootstrap core JavaScript -->
+            <script src="vendor/jquery/jquery.min.js"></script>
+            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <!-- slick Slider JS-->
+            <script type="text/javascript" src="vendor/slick/slick.min.js"></script>
+            <!-- Sidebar JS-->
+            <script type="text/javascript" src="vendor/sidebar/hc-offcanvas-nav.js"></script>
+            <!-- Custom scripts for all pages-->
+            <script src="js/articulosApp.js" type="module"></script>
+            <script>
+                $("#dvListadoMenu").hide();
+                //$("#dvListadoAcompaniantes").hide();
+
+                function showCategorias() {
+                    $('#dvListadoCombos').hide();
+                    $("#dvListadoMenu").show();
+                    //$("#dvListadoAcompaniantes").hide();
+                }
+
+                // function showAcompaniantes() {
+                //     $('#dvListadoCombos').hide();
+                //     $("#dvListadoMenu").hide();
+                //     //$("#dvListadoAcompaniantes").show();
+                // }
+
+                function showCategoriasModificadores() {
+                    const modificadores = JSON.parse(localStorage.getItem("modificadores"));
+                    console.log("Modificadores");
+                    console.log(modificadores);
+                    var listadoCategoriaModificadores = document.getElementById("listadoCategoriaModificadores");
+                    modificadores.forEach(function(unaSeccion) {
+                        const h62 = document.createElement("h6");
+                        h62.innerHTML = unaSeccion.artmodificador.length;
+                        h62.className = "price m-0 text-success";
+
+                        const a2 = document.createElement("a");
+                        a2.setAttribute('href', '#');
+                        a2.setAttribute('onClick', 'showComplementos(' + parseInt(unaSeccion.codmodificador) + ')');
+                        a2.className = "btn btn-success btn-sm ml-auto";
+                        a2.innerHTML = "+";
+
+                        const div6 = document.createElement("div");
+                        div6.className = "d-flex align-items-center";
+                        div6.appendChild(h62);
+                        div6.appendChild(a2);
+
+                        const h61 = document.createElement("h6");
+                        h61.innerHTML = unaSeccion.descripcion;
+
+                        const img = document.createElement("img");
+                        img.setAttribute('src', 'img/categorie/soft-drinks.svg');
+                        img.setAttribute('style', 'width: 60px; padding-top: 25px;');
+                        img.className = "img-fluid";
+
+
+                        const div5 = document.createElement("div");
+                        div5.className = "p-3 text-center";
+                        div5.appendChild(img);
+                        div5.appendChild(h61);
+                        div5.appendChild(div6);
+
+                        const span1 = document.createElement("span");
+                        span1.innerHTML = "Maximo " + unaSeccion.limite;
+                        span1.className = "badge m-3 badge-danger";
+
+                        const div4 = document.createElement("div");
+                        div4.className = "member-plan position-absolute";
+                        div4.appendChild(span1);
+
+
+                        const a1 = document.createElement("a");
+                        a1.className = "ext-dark";
+                        a1.setAttribute('href', '#');
+                        a1.appendChild(div4);
+                        a1.appendChild(div5);
+
+                        const div3 = document.createElement("div");
+                        div3.className = "list-card-image";
+                        div3.appendChild(a1);
+
+                        const div2 = document.createElement("div");
+                        div2.className = "list-card bg-white h-80 rounded overflow-hidden position-relative shadow-sm";
+                        div2.appendChild(div3);
+
+                        const div1 = document.createElement("div");
+                        div1.className = "col-12 pr-2";
+                        div1.setAttribute('style', 'margin-bottom: 20px;');
+                        div1.appendChild(div2);
+
+                        listadoCategoriaModificadores.appendChild(div1);
+                    });
+
+                }
+
+                function setComplemento(_codarticulo) {
+                    console.log("Agregando el complemento!!!");
+                    console.log(_codarticulo);
+                    const complemento = document.getElementById("cId_" + _codarticulo);
+                    const cantidadComplemento = complemento.value;
+                    if (parseInt(cantidadComplemento) > 0) {
+                        //Se procede a guardar el encabezado
+                        var salaId = localStorage.getItem("salaid");
+                        var mesaId = localStorage.getItem("mesa");
+                        var cliente = localStorage.getItem("cliente");
+                        var favoritoId = localStorage.getItem("favoritoId");
+                        var descripcion = complemento.getAttribute("comp_name");
+                        const datos = {
+                            sala: parseInt(salaId),
+                            mesa: parseInt(mesaId),
+                            codcliente: parseInt(cliente),
+                            numlinea: 1,
+                            numodif: 1,
+                            codarticulo: parseInt(_codarticulo),
+                            cantidad: parseInt(cantidadComplemento),
+                            precio: 1.50,
+                            descripcion: descripcion
+                        }
+                        console.log("Guardando complemento");
+                        console.log(datos);
+                        var servidorApi = localStorage.getItem("servidorApi") + "api/modificador";
+                        fetch(servidorApi, {
+                            method: "POST",
+                            headers: {
+                                'Content-Type': "application/json"
+                            },
+                            body: JSON.stringify(datos)
+                        }).then(retorno => {
+                            //alert("Plato agregado con exito!!");
+                            console.log("Complemento agregado");
+                            console.log(retorno);
+                        })
+                    } else {
+                        alert("Ingrese una cantidad mayor a CERO!");
+                    }
+                }
+
+                function showComplementos(_codModificador) {
+                    console.log("showComplementos");
+                    var listadoModificadores = document.getElementById("listadoModificadores");
+                    listadoModificadores.innerHTML = "";
+                    const modificadores = JSON.parse(localStorage.getItem("modificadores"));
+                    const modificador = modificadores.filter(m => m.codmodificador === _codModificador)
+                    console.log(modificadores);
+                    const complementos = modificador[0].artmodificador;
+                    const complementoNombre = modificador[0].descripcion;
+                    const min = modificador[0].minimo;
+                    const max = modificador[0].limite;
+
+                    complementos.forEach(function(unComplemento) {
+
+                        const button1 = document.createElement("a");
+                        button1.setAttribute('id', unComplemento.codarticulo);
+                        button1.setAttribute('onClick', 'setComplemento(' + parseInt(unComplemento.codarticulo) + ')');
+                        button1.className = "btn btn-success btn-sm";
+                        button1.innerHTML = "+";
+
+                        var inputCantidad = document.createElement("input");
+                        inputCantidad.className = "form-control";
+                        inputCantidad.setAttribute('type', 'number');
+                        inputCantidad.setAttribute('placeHolder', '0');
+                        inputCantidad.setAttribute('value', '1');
+                        inputCantidad.setAttribute('comp_name', unComplemento.descripcion);
+                        inputCantidad.setAttribute('id', "cId_" + unComplemento.codarticulo);
+                        inputCantidad.setAttribute('min', min);
+                        inputCantidad.setAttribute('max', max);
+
+                        const div4 = document.createElement("div");
+                        div4.className = "input-group input-spinner ml-auto cart-items-number";
+                        div4.appendChild(inputCantidad);
+                        div4.appendChild(button1);
+
+                        const p2 = document.createElement("p");
+                        p2.className = "total_price font-weight-bold m-0";
+                        //p2.innerHTML = "Código " + unComplemento.codarticulo;
+                        p2.innerHTML = "Minimo: " + min + "     Maximo: " + max
+
+                        const div3 = document.createElement("div");
+                        div3.className = "d-flex align-items-center";
+                        div3.appendChild(p2);
+                        div3.appendChild(div4);
+
+                        const p1 = document.createElement("p");
+                        p1.className = "text-muted mb-2";
+                        p1.innerHTML = "Código " + unComplemento.codarticulo + " Categoria:  " + complementoNombre;
+
+                        const h5 = document.createElement("h5");
+                        h5.className = "mb-1";
+                        h5.innerHTML = unComplemento.descripcion;
+
+                        const a2 = document.createElement("a");
+                        a2.setAttribute('href', "#");
+                        a2.className = "ml-3 text-dark text-decoration-none w-100";
+                        a2.appendChild(h5);
+                        a2.appendChild(p1);
+                        a2.appendChild(div3);
+
+                        const img = document.createElement("img");
+                        img.setAttribute('src', "img/categorie/soft-drinks.svg");
+                        img.className = "img-fluid";
+
+                        const a1 = document.createElement("a");
+                        a1.setAttribute('href', "");
+                        a1.appendChild(img);
+
+                        const div2 = document.createElement("div");
+                        div2.className = "d-flex  align-items-center p-3";
+                        div2.appendChild(a1);
+                        div2.appendChild(a2);
+
+                        const div1 = document.createElement("div");
+                        div1.className = "cart-items bg-white position-relative border-bottom;";
+                        div1.setAttribute('style', "margin-bottom: 10px;");
+                        div1.appendChild(div2);
+
+                        listadoModificadores.appendChild(div1);
+                    });
+                }
+
+                function filtrarCategorias() {
+                    var input, filter, ul, li, a, i, txtValue;
+                    input = document.getElementById("buscarCat");
+                    filter = input.value.toUpperCase();
+                    ul = document.getElementById("listSecciones");
+                    li = ul.getElementsByTagName("li");
+                    for (i = 0; i < li.length; i++) {
+                        a = li[i].getElementsByTagName("a")[0];
+                        txtValue = a.textContent || a.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            li[i].style.display = "";
+                        } else {
+                            li[i].style.display = "none";
+                        }
+                    }
+                }
+
+                function getModificadores(idPlato) {
+                    const articulosFav = JSON.parse(localStorage.getItem("articulosFav"));
+                    const plato = articulosFav.filter(x => x.codarticulo === parseInt(idPlato));
+                    localStorage.setItem("modificadores", JSON.stringify(plato[0].modificadores));
+                    showCategoriasModificadores()
+                }
+
+                function showOrdenProceso() {
+                    console.log("Mostrar Plato");
+                    var ordenEnProceso = JSON.parse(localStorage.getItem("ordenEnProceso"));
+
+                    const labelSala = document.getElementById("lblSala");
+                    const labelMesa = document.getElementById("lblMesa");
+                    const labelCliente = document.getElementById("lblCodCliente");
+                    const labelSala2 = document.getElementById("lblSala2");
+                    const labelMesa2 = document.getElementById("lblMesa2");
+                    const labelCliente2 = document.getElementById("lblCodCliente2");
+                    labelSala.innerHTML = localStorage.getItem("salaid"); //ordenEnProceso.sala;
+                    labelMesa.innerHTML = localStorage.getItem("mesa"); //ordenEnProceso.mesa;
+                    labelCliente.innerHTML = localStorage.getItem("cliente"); //ordenEnProceso.codcliente;
+
+                    labelSala2.innerHTML = localStorage.getItem("salaid"); //ordenEnProceso.sala;
+                    labelMesa2.innerHTML = localStorage.getItem("mesa"); //ordenEnProceso.mesa;
+                    labelCliente2.innerHTML = localStorage.getItem("cliente"); //ordenEnProceso.codcliente;
+
+                    var platos = ordenEnProceso.platos;
+                    const listadoProceso = document.getElementById("ordenList");
+                    const listadoProceso2 = document.getElementById("ordenList2");
+                    platos.forEach((platoAgregado, index) => {
+                        const itemLista = document.createElement("li");
+                        itemLista.className = "list-group-item d-flex justify-content-between align-items-start";
+
+                        const divDetalle = document.createElement("div");
+                        divDetalle.className = "ms-2 me-auto";
+
+                        const divPlato = document.createElement("div");
+                        divPlato.className = "fw-bold";
+                        divPlato.innerHTML = platoAgregado.descripcion;
+
+                        divDetalle.appendChild(divPlato);
+
+                        const cantidadPlato = document.createElement("span");
+                        cantidadPlato.className = "badge bg-primary rounded-pill";
+                        cantidadPlato.innerHTML = platoAgregado.cantidadComprada;
+
+                        const btnEliminar = document.createElement("a");
+                        btnEliminar.className = "btn bg-warning";
+                        btnEliminar.setAttribute('onClick', 'deletePlatoCarrito(' + platoAgregado.codArticulo + ',' + index + ')');
+                        btnEliminar.innerHTML = "Eliminar";
+
+                        if (platoAgregado.impreso == "N") {
+                            itemLista.appendChild(btnEliminar);
+                        }
+
+                        itemLista.appendChild(divDetalle);
+                        itemLista.appendChild(cantidadPlato);
+                        listadoProceso.appendChild(itemLista);
+                    })
+
+                    listadoProceso2.innerHTML = listadoProceso.innerHTML;
+                }
+
+                function setPlatoCarrito(idPlato, plato, complementos) {
+                    getModificadores(idPlato);
+                    localStorage.setItem("plato", idPlato);
+                    const cantidad = document.getElementById("pId_" + idPlato);
+                    var ordenEnProceso = JSON.parse(localStorage.getItem("ordenEnProceso"));
+                    var platos = ordenEnProceso.platos;
+                    const newPlato = {
+                        codArticulo: idPlato,
+                        descripcion: plato,
+                        cantidadComprada: cantidad.value,
+                        UNIDADES: cantidad.value,
+                        modificadores: [],
+                        impreso: "N"
+                    }
+
+                    platos.push(newPlato);
+                    ordenEnProceso.platos = platos;
+                    console.log(ordenEnProceso);
+                    if (parseInt(cantidad.value) > 0) {
+                        //Se procede a guardar el encabezado
+                        var salaId = localStorage.getItem("salaid");
+                        var mesaId = localStorage.getItem("mesa");
+                        var cliente = localStorage.getItem("cliente");
+                        var favoritoId = localStorage.getItem("favoritoId");
+                        const ahora = new Date();
+                        const datos = {
+                            SALA: salaId,
+                            MESA: mesaId,
+                            CODCLIENTE: cliente,
+                            NUMLINEA: Math.ceil(Math.random() * 10),
+                            CODARTICULO: idPlato,
+                            DESCRIPCION: plato,
+                            UNIDADES: cantidad.value,
+                            PRECIO: 1,
+                            PRECIOCOSTE: 1,
+                            PRECIOIVA: 1,
+                            CODVENDEDOR: 2,
+                            HORAINICIO: "2021-05-03", //T00:01:37.0604405-06:00"
+                            REFERENCIA: "123",
+                            CODFAMILIA: 1,
+                            CODTASA1: 1
+                        }
+                        console.log("Guardando plato");
+                        console.log(datos);
+                        var servidorApi = localStorage.getItem("servidorApi") + "api/pedido";
+                        fetch(servidorApi, {
+                            method: "POST",
+                            headers: {
+                                'Content-Type': "application/json"
+                            },
+                            body: JSON.stringify(datos)
+                        }).then(retorno => {
+                            console.log("Plato agregado con exito!!");
+                            localStorage.setItem("ordenEnProceso", JSON.stringify(ordenEnProceso));
+                            const listadoProceso = document.getElementById("ordenList");
+                            listadoProceso.innerHTML = "";
+                            const listadoProceso2 = document.getElementById("ordenList2");
+                            listadoProceso2.innerHTML = "";
+                            showOrdenProceso();
+                            console.log(retorno);
+                            // if (complementos == "S") {
+                            //     showAcompaniantes();
+                            // }
+                        })
+                    } else {
+                        alert("Ingrese una cantidad mayor a CERO!");
+                    }
+                }
+
+                function saveOrdenProceso(platoAgregado) {
+
+                    if (localStorage.getItem('ordenEnProceso') !== undefined &&
+                        localStorage.getItem('ordenEnProceso')
+                    ) {
+                        const ordenEnProceso = JSON.parse(localStorage.getItem('ordenEnProceso'));
+
+                    }
+                }
+
+                function fnImprimirOrden() {
+                    const ordenEnProceso = JSON.parse(localStorage.getItem("ordenEnProceso"));
+                    const platos = ordenEnProceso.platos;
+                    const platosImprimir = platos.filter(plato => plato.impreso == "N");
+                    ordenEnProceso.platos = platosImprimir;
+                    const servidorPrint = localStorage.getItem("servidorPrint");
+                    fetch(servidorPrint, {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': "application/json"
+                        },
+                        body: JSON.stringify(ordenEnProceso)
+                    }).then(retorno => {
+                        console.log(retorno);
+                        window.location.replace("menu.html");
+                    })
+                    setTimeout('', 10000);
+                    //window.location = "menu.html";
+                }
+
+                function deletePlatoCarrito(codArticulo, indice) {
+                    var ordenEnProceso = JSON.parse(localStorage.getItem("ordenEnProceso"));
+                    var platos = ordenEnProceso.platos;
+                    platos.splice(indice, 1);
+                    ordenEnProceso.platos = platos;
+                    localStorage.setItem("ordenEnProceso", JSON.stringify(ordenEnProceso));
+                    const listadoProceso = document.getElementById("ordenList");
+                    listadoProceso.innerHTML = "";
+                    const listadoProceso2 = document.getElementById("ordenList2");
+                    listadoProceso2.innerHTML = "";
+                    showOrdenProceso();
+
+                    console.log("Eliminando Plato!!!");
+                    console.log(codArticulo);
+                    //Se procede a guardar el encabezado
+                    var salaId = localStorage.getItem("salaid");
+                    var mesaId = localStorage.getItem("mesa");
+                    var cliente = localStorage.getItem("cliente");
+                    var favoritoId = localStorage.getItem("favoritoId");
+                    const datos = {
+                        sala: parseInt(salaId),
+                        mesa: parseInt(mesaId),
+                        codcliente: parseInt(cliente),
+                        numlinea: 1,
+                        numodif: 1,
+                        codarticulo: parseInt(codArticulo),
+                        cantidad: parseInt(1),
+                        precio: 1.50,
+                        descripcion: ''
+                    }
+                    console.log("Eliminando plato");
+                    console.log(datos);
+                    var servidorApi = localStorage.getItem("servidorApi") + "api/eliminarPlato";
+                    fetch(servidorApi, {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': "application/json"
+                        },
+                        body: JSON.stringify(datos)
+                    }).then(retorno => {
+                        console.log("Plato Eliminado");
+                        console.log(retorno);
+                    })
+
+                }
+            </script>
+    </body>
+
+    </html>

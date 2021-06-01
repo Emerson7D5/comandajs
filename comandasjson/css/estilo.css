@@ -1,0 +1,54 @@
+.mesas {
+    border: 0px;
+    border-style: solid;
+    border-color: black;
+    width: 45px;
+    height: 45px;
+    padding: 1px;
+    margin: 1pxs;
+    margin-top: 140px;
+    position: fixed;
+    /* background-color: rgb(75, 87, 153); */
+}
+
+.mesas img {
+    padding: 0px;
+    margin-left: 6px;
+}
+
+.mesas p {
+    padding: 0px;
+    margin: 0px;
+}
+
+#cliente2 {
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+}
+
+#clientesList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#clientesList li a {
+    border: 1px solid #ddd;
+    margin-top: -1px;
+    /* Prevent double borders */
+    background-color: #f6f6f6;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    display: block
+}
+
+#clientesList li a:hover:not(.header) {
+    background-color: #eee;
+}

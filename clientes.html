@@ -1,0 +1,395 @@
+`
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" href="img/logo.svg">
+    <title>Comanda App</title>
+    <!-- Slick Slider -->
+    <link rel="stylesheet" type="text/css" href="vendor/slick/slick.min.css" />
+    <link rel="stylesheet" type="text/css" href="vendor/slick/slick-theme.min.css" />
+    <!-- Icofont Icon-->
+    <link href="vendor/icons/icofont.min.css" rel="stylesheet" type="text/css">
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Sidebar CSS -->
+    <link href="vendor/sidebar/demo.css" rel="stylesheet">
+    <!-- Estilos propios de la app -->
+    <link href="css/estilo.css" rel="stylesheet">
+</head>
+
+<body class="">
+    <div class="">
+        <div class="border-bottom p-3 " style="background-color:rgb(48, 50, 177);">
+            <div class="title d-flex align-items-center">
+                <a href="menu.html" class="text-decoration-none text-dark d-flex align-items-center">
+                    <img class="osahan-logo mr-2" src="img/categorie/dining-table.svg">
+                    <h4 class="font-weight-bold text-success m-0">Comanda</h4>
+                </a>
+                <!-- <p class="ml-auto m-0">
+                    <a href="#" class="text-decoration-none bg-white p-1 rounded shadow-sm d-flex align-items-center">
+                        <i class="text-white icofont-notification"></i>
+                        <span class="badge badge-danger p-1 ml-1 small">2</span>
+                    </a>
+                </p>
+                <a class="toggle ml-3" href="#"><i class="icofont-navigation-menu"></i></a> -->
+            </div>
+
+        </div>
+        <!-- body -->
+        <div class="osahan-body">
+
+            <div class="osahan-body">
+                <!-- MESAS -->
+                <div class="p-3 osahan-categories">
+                    <div class="form-group">
+                        <h2 class="modal-title my-0" id="exampleModalLabel">Aperturar Mesa</h2>
+                    </div>
+                    <div class="bg-white">
+                        <div style="padding-right: 40px; padding-left: 40px;"><br/>
+                            <form>
+                                <h3>Ingrese los siguientes datos </h3><br/><br/>
+                                <form>
+                                    <div class="form-group">
+                                        <label for="numeroComenzales">Número Comenzales</label>
+                                        <input placeholder="# Comenzales" type="number" class="form-control" id="numeroComenzales" aria-describedby="emailHelp" min="1" max="99" value="2">
+                                    </div><br/><br/>
+                                    <div class="form-group">
+                                        <label for="cliente">Buscar Cliente</label>
+                                        <input placeholder="Ingrese el Nombre" type="text" onkeyup="myFunction()" class="form-control" id="cliente" aria-describedby="emailHelp">
+                                        <ul id="clientesList" class="clientesList">
+                                            <div id="listaClientes"></div>
+                                        </ul>
+                                        <br/>
+                                    </div>
+                                </form>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer bg-white">
+                        <!-- <button type="button" class="btn btn-secondary rounded btn-lg" data-dismiss="modal">Cancelar</button> -->
+                        <button type="button" class="btn btn-success rounded  btn-lg " data-toggle="modal" data-target="#modalCategorias" id="btnAperturarMesa">Aperturar Mesa</button>
+                        <!-- <a href="" class="btn btn-success rounded  btn-lg " data-toggle="modal" data-target="#modalCategorias" id="btnAperturarMesa" disabled>Aperturar Mesa</a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <div class="osahan-menu-fotter fixed-bottom bg-white text-center border-top">
+            <div class="row m-0">
+                <a href="menu.html" class="text-dark small col font-weight-bold text-decoration-none p-2 selected">
+                    <p class="h5 m-0"><i class="text-success icofont-grocery"></i></p>
+                    Mesas
+                </a>
+                <a href="mesasArticulos.html" class="text-muted col small text-decoration-none p-2">
+                    <p class="h5 m-0"><i class="icofont-cart"></i></p>
+                    Orden en Proceso
+                </a>
+                <a href="#" class="text-muted col small text-decoration-none p-2">
+                    <p class="h5 m-0"><i class="icofont-bag"></i></p>
+                    Ordenes
+                </a>
+                <a href="#" class="text-muted small col text-decoration-none p-2">
+                    <p class="h5 m-0"><i class="icofont-user"></i></p>
+                    Cuenta
+                </a>
+            </div>
+        </div>
+
+
+        <!-- Modal para Seleccionar categorias -->
+        <div class="modal fade" id="modalCategorias" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <!--</div>style="width: 80%; height: 80%; padding-left: 10%; padding-top: 10%;"> -->
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header ">
+                        <div class="border-bottom p-3 modal-title " style="width: 100%; background-color:rgb(48, 50, 177); padding: 0; margin: 0;">
+                            <div class="title d-flex align-items-center">
+                                <a href="menu.html" class="text-decoration-none text-dark d-flex align-items-center">
+                                    <img class="osahan-logo mr-2" src="img/categorie/dining-table.svg">
+                                    <h4 class="font-weight-bold text-success m-0">Comanda</h4>
+                                </a>
+                                <!-- <p class="ml-auto m-0">
+                                    <a href="#" class="text-decoration-none bg-white p-1 rounded shadow-sm d-flex align-items-center">
+                                        <i class="text-white icofont-notification"></i>
+                                        <span class="badge badge-danger p-1 ml-1 small">2</span>
+                                    </a>
+                                </p>
+                                <a class="toggle ml-3" href="#"><i class="icofont-navigation-menu"></i></a> -->
+
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div style="padding-right: 40px; padding-left: 40px;">
+                            <h2 class="modal-title my-0" id="exampleModalLabel">Seleccione un menu</h2><br/>
+                            <form>
+                                <div class="account-sections">
+                                    <div class="input-group ml-3 rounded shadow-sm overflow-hidden bg-white">
+                                        <div class="input-group-prepend">
+                                            <button class="border-0 btn btn-outline-secondary text-success bg-white"><i class="icofont-search"></i></button>
+                                        </div>
+                                        <input type="text" class=" form-control" placeholder="Filtrar por.." aria-describedby="emailHelp" onkeyup="filtrarCategorias()" id="buscarCat">
+                                    </div>
+                                    <div class="form-group">
+                                        <br/>
+                                        <ul class="list-group" id="listSecciones">
+                                            <!-- <div id="listaSecciones"></div> -->
+                                            <!-- <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                            <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                <i class="icofont-info-circle osahan-icofont bg-primary"></i>EL ATORADOR
+                                                <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                            </li>
+                                        </a> -->
+                                        </ul>
+                                    </div>
+                                    <!-- <ul class="list-group">
+                                        <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                            <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                <i class="icofont-info-circle osahan-icofont bg-primary"></i>SANDWICH PERSONAL
+                                                <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                            </li>
+                                        </a>
+                                        <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                            <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                <i class="icofont-info-circle osahan-icofont bg-primary"></i>SANDWICH GRANDE
+                                                <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                            </li>
+                                        </a>
+                                        <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                            <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                <i class="icofont-info-circle osahan-icofont bg-primary"></i>COMBOS PERSONALES
+                                                <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                            </li>
+                                        </a>
+                                        <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                            <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                <i class="icofont-info-circle osahan-icofont bg-primary"></i>COMBOS GRANDES
+                                                <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                            </li>
+                                        </a>
+                                        <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                            <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                <i class="icofont-info-circle osahan-icofont bg-primary"></i>COMBOS SANDWICH MINIS
+                                                <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                            </li>
+                                        </a>
+                                        <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                            <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                <i class="icofont-info-circle osahan-icofont bg-primary"></i>OTRAS DELICIAS
+                                                <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                            </li>
+                                        </a>
+                                        <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                            <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                <i class="icofont-info-circle osahan-icofont bg-primary"></i>COMBO MENU INFANTIL
+                                                <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                            </li>
+                                        </a>
+                                        <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                            <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                <i class="icofont-info-circle osahan-icofont bg-primary"></i>SANDWICH DESAYUNO
+                                                <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                            </li>
+                                        </a>
+                                        <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                            <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                <i class="icofont-info-circle osahan-icofont bg-primary"></i>ENSALADAS
+                                                <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                            </li>
+                                        </a>
+                                        <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                            <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                <i class="icofont-info-circle osahan-icofont bg-primary"></i>OTROS COMBOS
+                                                <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                            </li>
+                                        </a>
+                                        <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                            <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                <i class="icofont-info-circle osahan-icofont bg-primary"></i>ADICIONES
+                                                <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                            </li>
+                                        </a>
+                                        <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                            <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                <i class="icofont-info-circle osahan-icofont bg-primary"></i>AGRANDADOS
+                                                <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                            </li>
+                                        </a>
+                                        <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                            <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                <i class="icofont-info-circle osahan-icofont bg-primary"></i>ARMA TU COMBO
+                                                <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                            </li>
+                                        </a>
+                                        <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                            <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                <i class="icofont-info-circle osahan-icofont bg-primary"></i>BEBIDAS
+                                                <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                            </li>
+                                        </a>
+                                        <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                            <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                <i class="icofont-info-circle osahan-icofont bg-primary"></i>FRITURAS
+                                                <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                            </li>
+                                        </a>
+                                        <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                            <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                <i class="icofont-info-circle osahan-icofont bg-primary"></i>SNACK
+                                                <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                            </li>
+                                        </a>
+                                        <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                            <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                <i class="icofont-info-circle osahan-icofont bg-primary"></i>PROMOCIONES PARCHE
+                                                <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                            </li>
+                                        </a>
+                                        <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                            <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                <i class="icofont-info-circle osahan-icofont bg-primary"></i>PROMOCIONES 2X1
+                                                <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                            </li>
+                                        </a>
+                                        <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                            <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                <i class="icofont-info-circle osahan-icofont bg-primary"></i>INSTITUCIONAL
+                                                <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                            </li>
+                                        </a>
+                                        <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                            <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                <i class="icofont-info-circle osahan-icofont bg-primary"></i>CAMBIO DE PAN
+                                                <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                            </li>
+                                        </a>
+                                        <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                            <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                <i class="icofont-info-circle osahan-icofont bg-primary"></i>DOMICILIO
+                                                <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                            </li>
+                                        </a>
+                                    </ul> -->
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary rounded btn-lg" data-dismiss="modal">Cancelar</button>
+                        <!-- <a href="" class="btn btn-success rounded  btn-lg">Aperturar Mesa</a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- slick Slider JS-->
+        <script type="text/javascript" src="vendor/slick/slick.min.js"></script>
+        <!-- Sidebar JS-->
+        <script type="text/javascript" src="vendor/sidebar/hc-offcanvas-nav.js"></script>
+        <!-- Custom scripts for all pages-->
+        <!-- <script src="js/main.js"></script> -->
+        <script src="js/clientesApp.js" type="module"></script>
+
+        <script>
+            function myFunction() {
+                var input, filter, ul, li, a, i, txtValue;
+                input = document.getElementById("cliente");
+                filter = input.value.toUpperCase();
+                ul = document.getElementById("clientesList");
+                li = ul.getElementsByTagName("li");
+                for (i = 0; i < li.length; i++) {
+                    a = li[i].getElementsByTagName("a")[0];
+                    txtValue = a.textContent || a.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        li[i].style.display = "";
+                    } else {
+                        li[i].style.display = "none";
+                    }
+                }
+            }
+
+            function filtrarCategorias() {
+                var input, filter, ul, li, a, i, txtValue;
+                input = document.getElementById("buscarCat");
+                filter = input.value.toUpperCase();
+                ul = document.getElementById("listSecciones");
+                li = ul.getElementsByTagName("li");
+                for (i = 0; i < li.length; i++) {
+                    a = li[i].getElementsByTagName("a")[0];
+                    txtValue = a.textContent || a.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        li[i].style.display = "";
+                    } else {
+                        li[i].style.display = "none";
+                    }
+                }
+            }
+
+            function fnSeleccionarCategoria(idFavorito) {
+                window.location("mesasArticulos.html?codFavorito=" + idFavorito)
+            }
+
+            function fnClickCliente(cliente) {
+                const numComensales = document.getElementById("numeroComenzales");
+                if (numComensales.value == "") {
+                    alert("Ingrese el número de comensales!!");
+                    console.log("Ingrese el número de comensales!!");
+                }
+                if (parseInt(numComensales.value) > 0) {
+                    localStorage.setItem("cliente", cliente);
+                    console.log(cliente);
+                    //Se procede a guardar el encabezado
+                    var salaId = localStorage.getItem("salaid");
+                    var mesaId = localStorage.getItem("mesa");
+                    const datos = {
+                        SALA: salaId,
+                        MESA: mesaId,
+                        CODCLIENTE: cliente,
+                        COMENSALES: numComensales.value,
+                        OCUPADA: "T",
+                        HORAINICIO: "2021-05-03" //T00:01:37.0604405-06:00"
+                    }
+                    var servidorApi = localStorage.getItem("servidorApi") + "api/encabezados";
+                    fetch(servidorApi, {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': "application/json"
+                        },
+                        body: JSON.stringify(datos)
+                    }).then(retorno => {
+                        console.log(retorno);
+                    })
+                    const datosGuardados = {
+                        sala: salaId,
+                        mesa: mesaId,
+                        codcliente: cliente,
+                        comensales: numComensales.value,
+                        ocupada: "T",
+                        horaInicio: "2021-05-03", //T00:01:37.0604405-06:00"
+                        platos: []
+                    }
+                    localStorage.setItem("ordenEnProceso", JSON.stringify(datosGuardados));
+                    const btnAperturarMesa = document.getElementById("btnAperturarMesa");
+                    btnAperturarMesa.removeAttribute("disabled");
+                } else {
+                    alert("Ingrese el número de comensales!!");
+                    console.log("Ingrese el número de comensales!!");
+                }
+            }
+        </script>
+</body>
+
+</html>

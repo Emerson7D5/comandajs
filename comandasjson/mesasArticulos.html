@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" href="img/logo.svg">
+    <title>Comanda App</title>
+    <!-- Slick Slider -->
+    <link rel="stylesheet" type="text/css" href="vendor/slick/slick.min.css" />
+    <link rel="stylesheet" type="text/css" href="vendor/slick/slick-theme.min.css" />
+    <!-- Icofont Icon-->
+    <link href="vendor/icons/icofont.min.css" rel="stylesheet" type="text/css">
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Sidebar CSS -->
+    <link href="vendor/sidebar/demo.css" rel="stylesheet">
+    <!-- Estilos propios de la app -->
+    <link href="css/estilo.css" rel="stylesheet">
+</head>
+
+<body class="fixed-bottom-padding">
+    <!-- home page -->
+    <div class="osahan-home-page">
+        <div class="border-bottom p-3 " style="background-color:rgb(48, 50, 177);">
+            <div class="title d-flex align-items-center">
+                <a href="menu.html" class="text-decoration-none text-dark d-flex align-items-center">
+                    <img class="osahan-logo mr-2" src="img/categorie/dining-table.svg">
+                    <h4 class="font-weight-bold text-success m-0">Comanda</h4>
+                </a>
+                <p class="ml-auto m-0">
+                    <a href="#" class="text-decoration-none bg-white p-1 rounded shadow-sm d-flex align-items-center">
+                        <i class="text-white icofont-notification"></i>
+                        <span class="badge badge-danger p-1 ml-1 small">2</span>
+                    </a>
+                </p>
+                <a class="toggle ml-3" href="#"><i class="icofont-navigation-menu"></i></a>
+            </div>
+
+        </div>
+        <!-- body -->
+        <div class="osahan-body">
+
+            <div class="osahan-body">
+                <!-- Seleccione un producto -->
+                <div class="title d-flex align-items-center mb-3 mt-3 px-3">
+                    <h6 class="m-0">Seleccione un producto de los <strong><span id="favSel"></span> </strong></h6>
+                    <!-- <a class="ml-auto text-success" class="btn btn-success rounded " href="#" data-toggle="modal" data-target="#modalCategorias">Otra Categoria</a> -->
+
+                </div>
+                <!-- Listado de productos -->
+
+                <div class="osahan-body">
+                    <div id="dvListaPlatos">
+
+                    </div>
+                    <!-- <div class="cart-items bg-white position-relative border-bottom">
+                        <div class="d-flex  align-items-center p-3">
+                            <a href="#"><img src="img/categorie/fast-food.svg" class="img-fluid"></a>
+                            <a href="#" class="ml-3 text-dark text-decoration-none w-100">
+                                <h5 class="mb-1">SAND GRA SUP-ESPE</h5>
+                                <p class="text-muted mb-2"> F01019</p>
+                                <div class="d-flex align-items-center">
+                                    <p class="total_price font-weight-bold m-0">17,500.00</p>
+                                    <div class="input-group input-spinner ml-auto cart-items-number">
+                                        <div class="input-group-prepend">
+                                            <button class="btn btn-success btn-sm" type="button" id="button-plus"> + </button>
+                                        </div>
+                                        <input type="text" class="form-control" value="1">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-success btn-sm" type="button" id="button-minus"> − </button>
+                                        </div>
+                                    </div>
+                                    <div class="input-group-append" data-toggle="modal" data-target="#modalComplementos">
+                                        <span class="badge badge-success p-2 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <div class="osahan-menu-fotter fixed-bottom bg-white text-center border-top">
+            <div class="row m-0">
+                <a href="menu.html" class="text-muted col small text-decoration-none p-2 ">
+                    <p class="h5 m-0"><i class=" icofont-grocery"></i></p>
+                    Mesas
+                </a>
+                <a href="#" class="text-dark small col font-weight-bold text-decoration-none p-2  selected">
+                    <p class="h5 m-0"><i class="text-success icofont-cart"></i></p>
+                    Orden en Proceso
+                </a>
+                <a href="#" class="text-muted col small text-decoration-none p-2 ">
+                    <p class="h5 m-0"><i class="icofont-bag"></i></p>
+                    Ordenes
+                </a>
+                <a href="#" class="text-muted small col text-decoration-none p-2">
+                    <p class="h5 m-0"><i class="icofont-user"></i></p>
+                    Cuenta
+                </a>
+            </div>
+        </div>
+
+
+
+        <!-- Modal para seleccionar los modificadores -->
+        <div class="modal fade" id="modalComplementos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header ">
+                        <h2 class="modal-title my-0" id="exampleModalLabel">Seleccione los complementos</h2>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <!-- <span aria-hidden="true">&times;</span>1 -->
+                            <a href="" class="btn btn-success rounded  btn-lg" >Continuar</a>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="background-color: lightslategrey;">
+                        <div style="padding-right: 20px; padding-left: 20px;"><br/>
+
+                            <div class="pick_today px-3">
+                                <div class="row">
+                                    <!-- listado de categorias de complementos -->
+                                    <div class="col-3">
+                                        <!-- COMPLEMENTO -->
+                                        <div class="col-12 pr-2" style="margin-bottom: 20px;">
+                                            <div class="list-card bg-white h-80 rounded overflow-hidden position-relative shadow-sm">
+                                                <div class="list-card-image">
+                                                    <a href="#" class="text-dark">
+                                                        <div class="member-plan position-absolute"><span class="badge m-3 badge-danger">Maximo 1</span></div>
+                                                        <div class="p-3 text-center">
+                                                            <img src="img/categorie/sandwich.svg" class="img-fluid " style="width: 60px; padding-top: 25px;">
+                                                            <h6>SANDWICH</h6>
+                                                            <div class="d-flex align-items-center">
+                                                                <h6 class="price m-0 text-success">0</h6>
+                                                                <a href="#" class="btn btn-success btn-sm ml-auto">+</a>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- COMPLEMENTO -->
+                                        <div class="col-12 pr-2" style="margin-bottom: 20px;">
+                                            <div class="list-card bg-white h-80 rounded overflow-hidden position-relative shadow-sm">
+                                                <div class="list-card-image">
+                                                    <a href="#" class="text-dark">
+                                                        <div class="member-plan position-absolute"><span class="badge m-3 badge-danger">Maximo 1</span></div>
+                                                        <div class="p-3 text-center">
+                                                            <img src="img/categorie/soft-drinks.svg" class="img-fluid " style="width: 60px; padding-top: 25px;">
+                                                            <h6>ACOMPAÑANTE</h6>
+                                                            <div class="d-flex align-items-center">
+
+                                                                <h6 class="price m-0 text-success">0</h6>
+                                                                <a href="#" class="btn btn-success btn-sm ml-auto">+</a>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- COMPLEMENTO -->
+                                        <div class="col-12 pr-2 " style="margin-bottom: 20px;">
+                                            <div class="list-card bg-white h-80 rounded overflow-hidden position-relative shadow-sm">
+                                                <div class="list-card-image badge-warning">
+                                                    <a href="#" class="text-dark">
+                                                        <div class="member-plan position-absolute"><span class="badge m-3 badge-danger">Maximo 1</span></div>
+                                                        <div class="p-3 text-center">
+                                                            <img src="img/categorie/soft-drinks.svg" class="img-fluid " style="width: 60px; padding-top: 25px;">
+                                                            <h6>BEBIDAS</h6>
+                                                            <div class="d-flex align-items-center">
+
+                                                                <h6 class="price m-0 text-success">0</h6>
+                                                                <a href="#" class="btn btn-success btn-sm ml-auto">+</a>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- COMPLEMENTO -->
+                                        <div class="col-12 pr-2" style="margin-bottom: 20px;">
+                                            <div class="list-card bg-white h-80 rounded overflow-hidden position-relative shadow-sm">
+                                                <div class="list-card-image">
+                                                    <a href="#" class="text-dark">
+                                                        <div class="member-plan position-absolute"><span class="badge m-3 badge-danger">Maximo 1</span></div>
+                                                        <div class="p-3 text-center">
+                                                            <img src="img/categorie/resize.svg" class="img-fluid " style="width: 60px; padding-top: 25px;">
+                                                            <h6>AGRANDADO</h6>
+                                                            <div class="d-flex align-items-center">
+
+                                                                <h6 class="price m-0 text-success">0</h6>
+                                                                <a href="#" class="btn btn-success btn-sm ml-auto">+</a>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- COMPLEMENTO -->
+                                        <div class="col-12 pr-2" style="margin-bottom: 20px;">
+                                            <div class="list-card bg-white h-80 rounded overflow-hidden position-relative shadow-sm">
+                                                <div class="list-card-image">
+                                                    <a href="#" class="text-dark">
+                                                        <div class="member-plan position-absolute"><span class="badge m-3 badge-danger">Maximo 10</span></div>
+                                                        <div class="p-3 text-center">
+                                                            <img src="img/categorie/soft-drinks.svg" class="img-fluid " style="width: 60px; padding-top: 25px;">
+                                                            <h6>ADICIONES</h6>
+                                                            <div class="d-flex align-items-center">
+
+                                                                <h6 class="price m-0 text-success">0</h6>
+                                                                <a href="#" class="btn btn-success btn-sm ml-auto">+</a>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- COMPLEMENTO -->
+                                        <div class="col-12 pr-2" style="margin-bottom: 20px;">
+                                            <div class="list-card bg-white h-80 rounded overflow-hidden position-relative shadow-sm">
+                                                <div class="list-card-image">
+                                                    <a href="#" class="text-dark">
+                                                        <div class="member-plan position-absolute"><span class="badge m-3 badge-danger">Maximo 1</span></div>
+                                                        <div class="p-3 text-center">
+                                                            <img src="img/categorie/fast-delivery.svg" class="img-fluid " style="width: 60px; padding-top: 25px;">
+                                                            <h6>DOMICILIO</h6>
+                                                            <div class="d-flex align-items-center">
+
+                                                                <h6 class="price m-0 text-success">0</h6>
+                                                                <a href="#" class="btn btn-success btn-sm ml-auto">+</a>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- listado de complementos -->
+                                    <div class="col-9">
+                                        <!-- COMPLEMENTO -->
+                                        <div class="cart-items bg-white position-relative border-bottom" style="margin-bottom: 10px;">
+                                            <div class="d-flex  align-items-center p-3">
+                                                <a href="#"><img src="img/categorie/soft-drinks.svg" class="img-fluid"></a>
+                                                <a href="#" class="ml-3 text-dark text-decoration-none w-100">
+                                                    <h5 class="mb-1">BEB JU-AG 16OZ</h5>
+                                                    <p class="text-muted mb-2">BEBIDA</p>
+                                                    <div class="d-flex align-items-center">
+                                                        <p class="total_price font-weight-bold m-0">Código 144</p>
+                                                        <div class="input-group input-spinner ml-auto cart-items-number">
+                                                            <div class="input-group-prepend">
+                                                                <button class="btn btn-success btn-sm" type="button" id="button-plus"> + </button>
+                                                            </div>
+                                                            <input type="text" class="form-control" value="0">
+                                                            <div class="input-group-append">
+                                                                <button class="btn btn-success btn-sm" type="button" id="button-minus"> − </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <!-- COMPLEMENTO -->
+                                        <div class="cart-items bg-white position-relative border-bottom" style="margin-bottom: 10px;">
+                                            <div class="d-flex  align-items-center p-3">
+                                                <a href="#"><img src="img/categorie/soft-drinks.svg" class="img-fluid"></a>
+                                                <a href="#" class="ml-3 text-dark text-decoration-none w-100">
+                                                    <h5 class="mb-1">BEB JU-LE 16OZ</h5>
+                                                    <p class="text-muted mb-2">BEBIDA</p>
+                                                    <div class="d-flex align-items-center">
+                                                        <p class="total_price font-weight-bold m-0">Código 145</p>
+                                                        <div class="input-group input-spinner ml-auto cart-items-number">
+                                                            <div class="input-group-prepend">
+                                                                <button class="btn btn-success btn-sm" type="button" id="button-plus"> + </button>
+                                                            </div>
+                                                            <input type="text" class="form-control" value="1">
+                                                            <div class="input-group-append">
+                                                                <button class="btn btn-success btn-sm" type="button" id="button-minus"> − </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <!-- COMPLEMENTO -->
+                                        <div class="cart-items bg-white position-relative border-bottom" style="margin-bottom: 10px;">
+                                            <div class="d-flex  align-items-center p-3">
+                                                <a href="#"><img src="img/categorie/soft-drinks.svg" class="img-fluid"></a>
+                                                <a href="#" class="ml-3 text-dark text-decoration-none w-100">
+                                                    <h5 class="mb-1">BEB GAS 16OZ</h5>
+                                                    <p class="text-muted mb-2">BEBIDA</p>
+                                                    <div class="d-flex align-items-center">
+                                                        <p class="total_price font-weight-bold m-0">Código 148</p>
+                                                        <div class="input-group input-spinner ml-auto cart-items-number">
+                                                            <div class="input-group-prepend">
+                                                                <button class="btn btn-success btn-sm" type="button" id="button-plus"> + </button>
+                                                            </div>
+                                                            <input type="text" class="form-control" value="0">
+                                                            <div class="input-group-append">
+                                                                <button class="btn btn-success btn-sm" type="button" id="button-minus"> − </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <!-- COMPLEMENTO -->
+                                        <div class="cart-items bg-white position-relative border-bottom" style="margin-bottom: 10px;">
+                                            <div class="d-flex  align-items-center p-3">
+                                                <a href="#"><img src="img/categorie/soft-drinks.svg" class="img-fluid"></a>
+                                                <a href="#" class="ml-3 text-dark text-decoration-none w-100">
+                                                    <h5 class="mb-1">BEB LIMO 22OZ</h5>
+                                                    <p class="text-muted mb-2">BEBIDA</p>
+                                                    <div class="d-flex align-items-center">
+                                                        <p class="total_price font-weight-bold m-0">Código 154</p>
+                                                        <div class="input-group input-spinner ml-auto cart-items-number">
+                                                            <div class="input-group-prepend">
+                                                                <button class="btn btn-success btn-sm" type="button" id="button-plus"> + </button>
+                                                            </div>
+                                                            <input type="text" class="form-control" value="0">
+                                                            <div class="input-group-append">
+                                                                <button class="btn btn-success btn-sm" type="button" id="button-minus"> − </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <!-- COMPLEMENTO -->
+                                        <div class="cart-items bg-white position-relative border-bottom" style="margin-bottom: 10px;">
+                                            <div class="d-flex  align-items-center p-3">
+                                                <a href="#"><img src="img/categorie/soft-drinks.svg" class="img-fluid"></a>
+                                                <a href="#" class="ml-3 text-dark text-decoration-none w-100">
+                                                    <h5 class="mb-1">BEB CERV NAL</h5>
+                                                    <p class="text-muted mb-2">BEBIDA</p>
+                                                    <div class="d-flex align-items-center">
+                                                        <p class="total_price font-weight-bold m-0">Código 164</p>
+                                                        <div class="input-group input-spinner ml-auto cart-items-number">
+                                                            <div class="input-group-prepend">
+                                                                <button class="btn btn-success btn-sm" type="button" id="button-plus"> + </button>
+                                                            </div>
+                                                            <input type="text" class="form-control" value="0">
+                                                            <div class="input-group-append">
+                                                                <button class="btn btn-success btn-sm" type="button" id="button-minus"> − </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="modal-footer" style="background-color: white;">
+                            <!-- <button type="button" class="btn btn-secondary rounded btn-lg" data-dismiss="modal">Sin Complemento</button> -->
+                            <a href="" class="btn btn-success rounded  btn-lg">Continuar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Modal para Seleccionar categorias -->
+            <div class="modal fade" id="modalCategorias" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header ">
+                            <h2 class="modal-title my-0" id="exampleModalLabel">Seleccione un menu</h2>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <div style="padding-right: 40px; padding-left: 40px;"><br/>
+                                <form>
+                                    <div class="account-sections">
+                                        <div class="input-group ml-3 rounded shadow-sm overflow-hidden bg-white">
+                                            <div class="input-group-prepend">
+                                                <button class="border-0 btn btn-outline-secondary text-success bg-white"><i class="icofont-search"></i></button>
+                                            </div>
+                                            <input type="text" class="shadow-none border-0 form-control pl-0" placeholder="Filtrar por.." aria-label="" aria-describedby="basic-addon1" value="">
+                                        </div>
+
+                                        <ul class="list-group">
+                                            <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                                <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                    <i class="icofont-info-circle osahan-icofont bg-primary"></i>SANDWICH PERSONAL
+                                                    <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                                </li>
+                                            </a>
+                                            <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                                <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                    <i class="icofont-info-circle osahan-icofont bg-primary"></i>SANDWICH GRANDE
+                                                    <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                                </li>
+                                            </a>
+                                            <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                                <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                    <i class="icofont-info-circle osahan-icofont bg-primary"></i>COMBOS PERSONALES
+                                                    <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                                </li>
+                                            </a>
+                                            <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                                <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                    <i class="icofont-info-circle osahan-icofont bg-primary"></i>COMBOS GRANDES
+                                                    <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                                </li>
+                                            </a>
+                                            <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                                <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                    <i class="icofont-info-circle osahan-icofont bg-primary"></i>COMBOS SANDWICH MINIS
+                                                    <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                                </li>
+                                            </a>
+                                            <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                                <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                    <i class="icofont-info-circle osahan-icofont bg-primary"></i>OTRAS DELICIAS
+                                                    <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                                </li>
+                                            </a>
+                                            <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                                <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                    <i class="icofont-info-circle osahan-icofont bg-primary"></i>COMBO MENU INFANTIL
+                                                    <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                                </li>
+                                            </a>
+                                            <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                                <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                    <i class="icofont-info-circle osahan-icofont bg-primary"></i>SANDWICH DESAYUNO
+                                                    <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                                </li>
+                                            </a>
+                                            <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                                <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                    <i class="icofont-info-circle osahan-icofont bg-primary"></i>ENSALADAS
+                                                    <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                                </li>
+                                            </a>
+                                            <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                                <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                    <i class="icofont-info-circle osahan-icofont bg-primary"></i>OTROS COMBOS
+                                                    <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                                </li>
+                                            </a>
+                                            <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                                <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                    <i class="icofont-info-circle osahan-icofont bg-primary"></i>ADICIONES
+                                                    <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                                </li>
+                                            </a>
+                                            <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                                <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                    <i class="icofont-info-circle osahan-icofont bg-primary"></i>AGRANDADOS
+                                                    <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                                </li>
+                                            </a>
+                                            <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                                <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                    <i class="icofont-info-circle osahan-icofont bg-primary"></i>ARMA TU COMBO
+                                                    <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                                </li>
+                                            </a>
+                                            <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                                <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                    <i class="icofont-info-circle osahan-icofont bg-primary"></i>BEBIDAS
+                                                    <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                                </li>
+                                            </a>
+                                            <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                                <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                    <i class="icofont-info-circle osahan-icofont bg-primary"></i>FRITURAS
+                                                    <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                                </li>
+                                            </a>
+                                            <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                                <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                    <i class="icofont-info-circle osahan-icofont bg-primary"></i>SNACK
+                                                    <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                                </li>
+                                            </a>
+                                            <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                                <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                    <i class="icofont-info-circle osahan-icofont bg-primary"></i>PROMOCIONES PARCHE
+                                                    <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                                </li>
+                                            </a>
+                                            <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                                <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                    <i class="icofont-info-circle osahan-icofont bg-primary"></i>PROMOCIONES 2X1
+                                                    <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                                </li>
+                                            </a>
+                                            <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                                <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                    <i class="icofont-info-circle osahan-icofont bg-primary"></i>INSTITUCIONAL
+                                                    <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                                </li>
+                                            </a>
+                                            <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                                <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                    <i class="icofont-info-circle osahan-icofont bg-primary"></i>CAMBIO DE PAN
+                                                    <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                                </li>
+                                            </a>
+                                            <a href="mesasArticulos.html" class="text-decoration-none text-dark">
+                                                <li class="border-bottom bg-white d-flex align-items-center p-3">
+                                                    <i class="icofont-info-circle osahan-icofont bg-primary"></i>DOMICILIO
+                                                    <span class="badge badge-success p-1 badge-pill ml-auto"><i class="icofont-simple-right"></i></span>
+                                                </li>
+                                            </a>
+                                        </ul>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary rounded btn-lg" data-dismiss="modal">Cancelar</button>
+                            <!-- <a href="" class="btn btn-success rounded  btn-lg">Aperturar Mesa</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Bootstrap core JavaScript -->
+            <script src="vendor/jquery/jquery.min.js"></script>
+            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <!-- slick Slider JS-->
+            <script type="text/javascript" src="vendor/slick/slick.min.js"></script>
+            <!-- Sidebar JS-->
+            <script type="text/javascript" src="vendor/sidebar/hc-offcanvas-nav.js"></script>
+            <!-- Custom scripts for all pages-->
+            <script src="js/articulosApp.js" type="module"></script>
+            <script>
+                function setPlatoCarrito(id) {
+                    console.log("Agregado " + id);
+                }
+            </script>
+</body>
+
+</html>
