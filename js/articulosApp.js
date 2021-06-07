@@ -16,8 +16,9 @@ const showOrdenEnProcesoInit = () => {
 
     const listadoProceso = document.getElementById("ordenList");
     platos.forEach((platoAgregado, index) => {
+        const nuevoitem = document.createElement("ol");
+        nuevoitem.className = "list-group list-group-numbered"
 
-        console.log("Mostrar Plato");
         const itemLista = document.createElement("li");
         itemLista.className = "list-group-item d-flex justify-content-between align-items-start";
 
@@ -25,7 +26,7 @@ const showOrdenEnProcesoInit = () => {
         divDetalle.className = "ms-2 me-auto";
 
         const divPlato = document.createElement("div");
-        divPlato.className = "fw-bold";
+        divPlato.className = "fw-bold text-left";
         divPlato.innerHTML = platoAgregado.descripcion;
 
         divDetalle.appendChild(divPlato);
@@ -34,10 +35,11 @@ const showOrdenEnProcesoInit = () => {
         cantidadPlato.className = "badge bg-primary rounded-pill";
         cantidadPlato.innerHTML = platoAgregado.cantidadComprada;
 
-        const btnEliminar = document.createElement("a");
-        btnEliminar.className = "btn bg-warning";
+        const btnEliminar = document.createElement("button");
+        btnEliminar.setAttribute('type', 'button');
+        btnEliminar.className = "btn bg-warning btn-sm";
         btnEliminar.setAttribute('onClick', 'deletePlatoCarrito(' + platoAgregado.codArticulo + ', ' + index + ')');
-        btnEliminar.innerHTML = "Eliminar";
+        btnEliminar.innerHTML = " - ";
 
         if (platoAgregado.impreso == "N") {
             itemLista.appendChild(btnEliminar);
@@ -46,7 +48,21 @@ const showOrdenEnProcesoInit = () => {
         itemLista.appendChild(divDetalle);
         itemLista.appendChild(cantidadPlato);
 
-        listadoProceso.appendChild(itemLista);
+        nuevoitem.appendChild(itemLista);
+
+        platoAgregado.modificadores.forEach((modificador, index) => {
+            const divModificadores = document.createElement("p");
+            divModificadores.className = " text-center ";
+            divModificadores.innerHTML = ' ---' + modificador.DESCRIPCION;
+
+            const itemModificador = document.createElement("li");
+            itemModificador.className = "list-group-item d-flex justify-content-between align-items-start text-center ";
+            itemModificador.appendChild(divModificadores);
+            nuevoitem.appendChild(itemModificador);
+        });
+
+
+        listadoProceso.appendChild(nuevoitem);
     })
 
     const listadoProceso2 = document.getElementById("ordenList2");

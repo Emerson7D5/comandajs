@@ -420,16 +420,19 @@
                         var cliente = localStorage.getItem("cliente");
                         var favoritoId = localStorage.getItem("favoritoId");
                         var descripcion = complemento.getAttribute("comp_name");
+                        const ultimoPlato = localStorage.getItem("ultimoPlato");
+
                         const datos = {
-                            sala: parseInt(salaId),
-                            mesa: parseInt(mesaId),
-                            codcliente: parseInt(cliente),
-                            numlinea: 1,
-                            numodif: 1,
-                            codarticulo: parseInt(_codarticulo),
-                            cantidad: parseInt(cantidadComplemento),
+                            SALA: parseInt(salaId),
+                            MESA: parseInt(mesaId),
+                            CODCLIENTE: parseInt(cliente),
+                            NUMLINEA: ultimoPlato.NUMLINEA,
+                            NUMMODIF: parseInt(cantidadComplemento),
+                            CODARTICULO: parseInt(_codarticulo),
+                            CANTIDAD: parseInt(cantidadComplemento),
                             precio: 1.50,
-                            descripcion: descripcion
+                            INCPRECIO: 0.00,
+                            DESCRIPCION: descripcion
                         }
                         console.log("Guardando complemento");
                         console.log(datos);
@@ -444,6 +447,19 @@
                             //alert("Plato agregado con exito!!");
                             console.log("Complemento agregado");
                             console.log(retorno);
+
+                            //se obtiene el arreglo de la orden
+                            var ordenEnProceso = JSON.parse(localStorage.getItem("ordenEnProceso"));
+                            var platos = ordenEnProceso.platos;
+                            //console.log("//se obtiene el ultimo plato de la orden");
+                            modificadoresPlatoAgregado = platos[platos.length - 1].modificadores;
+                            modificadoresPlatoAgregado.push(datos);
+                            //console.log(modificadoresPlatoAgregado);
+                            platos[platos.length - 1].modificadores = modificadoresPlatoAgregado;
+                            ordenEnProceso.platos = platos;
+                            localStorage.setItem("ordenEnProceso", JSON.stringify(ordenEnProceso));
+                            showOrdenProceso();
+                            return retorno.json();
                         })
                     } else {
                         alert("Ingrese una cantidad mayor a CERO!");
@@ -576,10 +592,18 @@
 
                     var platos = ordenEnProceso.platos;
                     const listadoProceso = document.getElementById("ordenList");
+                    listadoProceso.innerHTML = "";
                     const listadoProceso2 = document.getElementById("ordenList2");
+                    listadoProceso2.innerHTML = "";
                     platos.forEach((platoAgregado, index) => {
+                        const nuevoitem = document.createElement("ol");
+                        nuevoitem.className = "list-group list-group-numbered"
+
                         const itemLista = document.createElement("li");
                         itemLista.className = "list-group-item d-flex justify-content-between align-items-start";
+
+                        const divDetalleItem = document.createElement("div");
+                        divDetalleItem.className = "me-auto";
 
                         const divDetalle = document.createElement("div");
                         divDetalle.className = "ms-2 me-auto";
@@ -591,21 +615,43 @@
                         divDetalle.appendChild(divPlato);
 
                         const cantidadPlato = document.createElement("span");
-                        cantidadPlato.className = "badge bg-primary rounded-pill";
+                        cantidadPlato.className = "badge bg-primary rounded-pill text-w";
                         cantidadPlato.innerHTML = platoAgregado.cantidadComprada;
 
-                        const btnEliminar = document.createElement("a");
-                        btnEliminar.className = "btn bg-warning";
+                        const btnEliminar = document.createElement("button");
+                        btnEliminar.className = "btn bg-warning btn-sx";
+                        btnEliminar.setAttribute('type', 'button');
                         btnEliminar.setAttribute('onClick', 'deletePlatoCarrito(' + platoAgregado.codArticulo + ',' + index + ')');
-                        btnEliminar.innerHTML = "Eliminar";
+                        btnEliminar.innerHTML = " - ";
 
                         if (platoAgregado.impreso == "N") {
                             itemLista.appendChild(btnEliminar);
                         }
+                        divDetalle.appendChild(divPlato);
 
                         itemLista.appendChild(divDetalle);
                         itemLista.appendChild(cantidadPlato);
-                        listadoProceso.appendChild(itemLista);
+                        nuevoitem.appendChild(itemLista);
+
+
+                        platoAgregado.modificadores.forEach((modificador, index) => {
+                            const divModificadores = document.createElement("p");
+                            divModificadores.className = "fw-bold ";
+                            var qty = modificador.CANTIDAD;
+                            if (modificador.CANTIDAD) {
+                                divModificadores.innerHTML = ' ---' + modificador.CANTIDAD + ' - ' + modificador.DESCRIPCION;
+                            } else {
+
+                                divModificadores.innerHTML = ' ---' + modificador.DESCRIPCION;
+
+                            }
+                            const itemModificador = document.createElement("li");
+                            itemModificador.className = "list-group-item d-flex justify-content-between align-items-start text-center ";
+                            itemModificador.appendChild(divModificadores);
+                            nuevoitem.appendChild(itemModificador);
+                        });
+
+                        listadoProceso.appendChild(nuevoitem);
                     })
 
                     listadoProceso2.innerHTML = listadoProceso.innerHTML;
@@ -628,7 +674,7 @@
 
                     platos.push(newPlato);
                     ordenEnProceso.platos = platos;
-                    console.log(ordenEnProceso);
+                    //console.log(ordenEnProceso);
                     if (parseInt(cantidad.value) > 0) {
                         //Se procede a guardar el encabezado
                         var salaId = localStorage.getItem("salaid");
@@ -637,44 +683,48 @@
                         var favoritoId = localStorage.getItem("favoritoId");
                         const ahora = new Date();
                         const datos = {
-                            SALA: salaId,
-                            MESA: mesaId,
-                            CODCLIENTE: cliente,
-                            NUMLINEA: Math.ceil(Math.random() * 10),
-                            CODARTICULO: idPlato,
-                            DESCRIPCION: plato,
-                            UNIDADES: cantidad.value,
-                            PRECIO: 1,
-                            PRECIOCOSTE: 1,
-                            PRECIOIVA: 1,
-                            CODVENDEDOR: 2,
-                            HORAINICIO: "2021-05-03", //T00:01:37.0604405-06:00"
-                            REFERENCIA: "123",
-                            CODFAMILIA: 1,
-                            CODTASA1: 1
-                        }
-                        console.log("Guardando plato");
-                        console.log(datos);
+                                SALA: salaId,
+                                MESA: mesaId,
+                                CODCLIENTE: cliente,
+                                NUMLINEA: Math.ceil(Math.random() * 10),
+                                CODARTICULO: idPlato,
+                                DESCRIPCION: plato,
+                                UNIDADES: cantidad.value,
+                                PRECIO: 1,
+                                PRECIOCOSTE: 1,
+                                PRECIOIVA: 1,
+                                CODVENDEDOR: 2,
+                                HORAINICIO: "2021-05-03", //T00:01:37.0604405-06:00"
+                                REFERENCIA: "123",
+                                CODFAMILIA: 1,
+                                CODTASA1: 1
+                            }
+                            //console.log("Guardando plato");
+                            //console.log(datos);
                         var servidorApi = localStorage.getItem("servidorApi") + "api/pedido";
                         fetch(servidorApi, {
-                            method: "POST",
-                            headers: {
-                                'Content-Type': "application/json"
-                            },
-                            body: JSON.stringify(datos)
-                        }).then(retorno => {
-                            console.log("Plato agregado con exito!!");
-                            localStorage.setItem("ordenEnProceso", JSON.stringify(ordenEnProceso));
-                            const listadoProceso = document.getElementById("ordenList");
-                            listadoProceso.innerHTML = "";
-                            const listadoProceso2 = document.getElementById("ordenList2");
-                            listadoProceso2.innerHTML = "";
-                            showOrdenProceso();
-                            console.log(retorno);
-                            // if (complementos == "S") {
-                            //     showAcompaniantes();
-                            // }
-                        })
+                                method: "POST",
+                                headers: {
+                                    'Content-Type': "application/json"
+                                },
+                                body: JSON.stringify(datos)
+                            }).then(retorno => {
+                                return retorno.json()
+                            })
+                            .then(retorno => {
+                                console.log("Plato agregado con exito!!");
+                                localStorage.setItem("ordenEnProceso", JSON.stringify(ordenEnProceso));
+                                const listadoProceso = document.getElementById("ordenList");
+                                listadoProceso.innerHTML = "";
+                                const listadoProceso2 = document.getElementById("ordenList2");
+                                listadoProceso2.innerHTML = "";
+                                showOrdenProceso();
+                                console.log(retorno);
+                                localStorage.setItem("ultimoPlato", retorno);
+                                // if (complementos == "S") {
+                                //     showAcompaniantes();
+                                // }
+                            })
                     } else {
                         alert("Ingrese una cantidad mayor a CERO!");
                     }
